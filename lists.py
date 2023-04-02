@@ -17,9 +17,9 @@ else:
     sys.exit(1)
 
 
-# if function_number is 1, we plot the function f(x) = x
+# if function_number is {1,2,3}, we plot the function f(x) = x^function_number
 # otherwise, we give an error message
-if function_number == 1:
+if function_number in [1,2,3]:
     # we create two lists xval and yval
     xval = []
     yval = []
@@ -30,16 +30,14 @@ if function_number == 1:
 
     # we populate yval with the values of the function f(x) = x
     for x in xval:
-        yval.append(x)
+        yval.append(x**function_number)
 
     # we plot the values of xval and yval
-    print("Plotting function number "+str(function_number)+", i.e. f(x) = x")
+    print("Plotting function number "+str(function_number)+", i.e. f(x) = x^"+str(function_number)+"")
     plt.plot(xval, yval)
     plt.show()
+    plt.close()
 
-    # close the plot window to continue
-    input("Press Enter to end the program...")
-
-elif function_number != 1:
-    print("ERROR: Only function number 1 is implemented")
+else:
+    print("ERROR: Only functions number 1, 2 and 3 are implemented")
     sys.exit(1)
