@@ -30,8 +30,8 @@ if function_number in functions.keys():
     xval = []
     yval = []
 
-    # we populate xval with values from -5.0 to 5.0 (inclusive) with a step of 0.1
-    for i in range(-50, 51):
+    # we populate xval with values from -3.0 to 3.0 (inclusive) with a step of 0.1
+    for i in range(-30, 31):
         xval.append(i/10.0)
 
     # we populate yval with the values of the function f(x) = x
