@@ -9,7 +9,27 @@ if len(sys.argv) == 1:
     sys.exit(1)
 elif len(sys.argv) == 2:
     print("Number", sys.argv[1], "was passed")
+    function_number = int(sys.argv[1])
 else:
     print("ERROR: Too many arguments, expected one number")
     sys.exit(1)
 
+
+# if function_number is 1, we plot the function f(x) = x
+# otherwise, we give an error message
+if function_number == 1:
+    # we create two lists xval and yval
+    xval = []
+    yval = []
+
+    # we populate xval with values from -5.0 to 5.0 (inclusive) with a step of 0.1
+    for i in range(-50, 51):
+        xval.append(i/10.0)
+
+    # we populate yval with the values of the function f(x) = x
+    for x in xval:
+        yval.append(x)
+
+elif function_number != 1:
+    print("ERROR: Only function number 1 is implemented")
+    sys.exit(1)
