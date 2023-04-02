@@ -1,7 +1,7 @@
 ### python script to create lists and plot them
 import sys
 import matplotlib.pyplot as plt
-
+import math 
 
 # the script takes a number as input from command line. 
 # We reprint it here to check it is working fine.
@@ -17,9 +17,14 @@ else:
     sys.exit(1)
 
 
-# if function_number is 1, we plot the function f(x) = x
+handled_functions = [2, 3, 4]
+# if function_number belongs to {2,3,4} we plot the function f(x) = sin/cos/tan(x) respectively
 # otherwise, we give an error message
-if function_number == 1:
+
+# we create a dictionary with the function names
+function_names = {2: "sin", 3: "cos", 4: "tan"}
+
+if function_number in handled_functions:
     # we create two lists xval and yval
     xval = []
     yval = []
@@ -28,18 +33,28 @@ if function_number == 1:
     for i in range(-50, 51):
         xval.append(i/10.0)
 
-    # we populate yval with the values of the function f(x) = x
+    # we populate yval with the values of the function f(x) = sin/cos/tan(x) and plot it
     for x in xval:
-        yval.append(x)
+        if function_number == 2:
+            yval.append(math.sin(x))
+        elif function_number == 3:
+            yval.append(math.cos(x))
+        elif function_number == 4:
+            yval.append(math.tan(x))
 
-    # we plot the values of xval and yval
-    print("Plotting function number "+str(function_number)+", i.e. f(x) = x")
+    print("Plotting function number "+str(function_number)+", i.e "+function_names[function_number]+"(x)")
     plt.plot(xval, yval)
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.title("Plot of "+function_names[function_number]+"(x)")
     plt.show()
 
-    # close the plot window to continue
-    input("Press Enter to end the program...")
+    # close the plot and exit
+    plt.close()
+    sys.exit(0)
 
-elif function_number != 1:
-    print("ERROR: Only function number 1 is implemented")
+    
+else:
+    print("ERROR: Function number "+str(function_number)+" is not implemented")
+    print("Implemented functions are: "+str(handled_functions))
     sys.exit(1)
