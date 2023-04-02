@@ -5,7 +5,7 @@ import math
 
 
 # create a dictionary with numbers and name of handled functions
-functions = {1: "f(x) = x", 2: "f(x) = x^2", 3: "f(x) = x^3", 4: "f(x) = sin(x)", 5: "f(x) = cos(x)", 6: "f(x) = tan(x)"}
+functions = {1: "f(x) = x", 2: "f(x) = x^2", 3: "f(x) = x^3", 4: "f(x) = sin(x)", 5: "f(x) = cos(x)", 6: "f(x) = tan(x)", 7: "f(x) = exp(x)", 8: "f(x) = sqrt(|x|)"}
 
 # the script takes a number as input from command line. 
 # We reprint it here to check it is working fine.
@@ -47,12 +47,17 @@ if function_number in functions.keys():
             yval.append(math.cos(x))
         elif function_number == 6:
             yval.append(math.tan(x))
+        elif function_number == 7:
+            yval.append(math.exp(x))
+        elif function_number == 8:
+            yval.append(math.sqrt(abs(x)))
 
     # we plot the values of xval and yval
     print("Plotting function number "+str(function_number)+", i.e. "+functions[function_number])
     plt.plot(xval, yval)
     plt.title("Plot of "+functions[function_number])
     plt.show()
+    plt.close()
 
 else:
     print("ERROR: function number "+str(function_number)+" is not implemented")
