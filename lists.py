@@ -1,5 +1,7 @@
 ### python script to create lists and plot them
 import sys
+import matplotlib.pyplot as plt
+
 
 # the script takes a number as input from command line. 
 # We reprint it here to check it is working fine.
@@ -29,6 +31,14 @@ if function_number == 1:
     # we populate yval with the values of the function f(x) = x
     for x in xval:
         yval.append(x)
+
+    # we plot the values of xval and yval
+    print("Plotting function number "+str(function_number)+", i.e. f(x) = x")
+    plt.plot(xval, yval)
+    plt.show()
+
+    # close the plot window to continue
+    input("Press Enter to end the program...")
 
 elif function_number != 1:
     print("ERROR: Only function number 1 is implemented")
