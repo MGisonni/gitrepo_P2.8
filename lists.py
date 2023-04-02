@@ -3,11 +3,17 @@ import sys
 import matplotlib.pyplot as plt
 
 
+# create a dictionary with numbers and name of handled functions
+functions = {1: "f(x) = x"}
+
 # the script takes a number as input from command line. 
 # We reprint it here to check it is working fine.
 # if no number is given, we print an error message.
 if len(sys.argv) == 1:
     print("ERROR: No number given, expected one number")
+    print("The following functions are implemented:")
+    for key in functions:
+        print("  "+str(key)+": "+functions[key])
     sys.exit(1)
 elif len(sys.argv) == 2:
     print("Number", sys.argv[1], "was passed")
@@ -36,10 +42,11 @@ if function_number == 1:
     print("Plotting function number "+str(function_number)+", i.e. f(x) = x")
     plt.plot(xval, yval)
     plt.show()
-
-    # close the plot window to continue
-    input("Press Enter to end the program...")
+    plt.close()
 
 elif function_number != 1:
-    print("ERROR: Only function number 1 is implemented")
+    print("ERROR: function number "+str(function_number)+" is not implemented")
+    print("The following functions are implemented:")
+    for key in functions:
+        print("  "+str(key)+": "+functions[key])
     sys.exit(1)
