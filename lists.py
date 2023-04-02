@@ -3,11 +3,17 @@ import sys
 import matplotlib.pyplot as plt
 
 
+# create a dictionary with numbers and name of handled functions
+functions = {1: "f(x) = x", 2: "f(x) = x^2", 3: "f(x) = x^3"}
+
 # the script takes a number as input from command line. 
 # We reprint it here to check it is working fine.
 # if no number is given, we print an error message.
 if len(sys.argv) == 1:
     print("ERROR: No number given, expected one number")
+    print("The following functions are implemented:")
+    for key in functions:
+        print("  "+str(key)+": "+functions[key])
     sys.exit(1)
 elif len(sys.argv) == 2:
     print("Number", sys.argv[1], "was passed")
@@ -19,7 +25,7 @@ else:
 
 # if function_number is {1,2,3}, we plot the function f(x) = x^function_number
 # otherwise, we give an error message
-if function_number in [1,2,3]:
+if function_number in functions.keys():
     # we create two lists xval and yval
     xval = []
     yval = []
@@ -33,11 +39,13 @@ if function_number in [1,2,3]:
         yval.append(x**function_number)
 
     # we plot the values of xval and yval
-    print("Plotting function number "+str(function_number)+", i.e. f(x) = x^"+str(function_number)+"")
+    print("Plotting function number "+str(function_number)+", i.e. "+functions[function_number])
     plt.plot(xval, yval)
     plt.show()
-    plt.close()
 
-else:
-    print("ERROR: Only functions number 1, 2 and 3 are implemented")
-    sys.exit(1)
+else
+    print("ERROR: function number "+str(function_number)+" is not implemented")
+    print("The following functions are implemented:")
+    for key in functions:
+        print("  "+str(key)+": "+functions[key])    
+        sys.exit(1)
