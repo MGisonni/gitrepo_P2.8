@@ -43,7 +43,7 @@ if function_number in functions.keys():
     plt.plot(xval, yval)
     plt.show()
 
-else
+else:
     print("ERROR: function number "+str(function_number)+" is not implemented")
     print("The following functions are implemented:")
     for key in functions:
